@@ -2,28 +2,24 @@
 
 int main() {
 
-	int n, i, j, temp;
+	int n, i, j;
 	int arr[10] = { 0, };
-	int count = 0;
+	int result = 0;
 
 	for (i = 0; i < 10; i++) {
 		scanf("%d", &n);
 		arr[i] = n % 42;
 	} // 배열에 수입력
 	for (i = 0; i < 10; i++) {
-		for (j = 0; j < 10; j++) {
-			if (arr[i] < arr[j]) {
-				temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
+		int count = 0;
+		for (j = 0; j < i; j++) {
+			if (arr[i] == arr[j]) {
+				count++;
 			}
 		}
-	}// 배열 크기순으로 정렬 
-	for (i = 0; i < 10; i++) {
-		if (arr[i] != arr[i + 1]) {
-			count += 1;
-		}
-	} // 서로 다른 나머지의 개수
-	printf("%d", count);
+		if (count == 0)
+			result++;
+	}
+	printf("%d", result);
 	return 0;
 }
